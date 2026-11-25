@@ -1,0 +1,39 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="50" y1="30" x2="450" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#292033"/>
+      <stop offset="1" stop-color="#100F18"/>
+    </linearGradient>
+    <linearGradient id="fire" x1="150" y1="100" x2="370" y2="410" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD166"/>
+      <stop offset=".48" stop-color="#FF853D"/>
+      <stop offset="1" stop-color="#F04438"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="200" y1="230" x2="310" y2="370" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0C2"/>
+      <stop offset="1" stop-color="#FFB45B"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="16" y="16" width="480" height="480" rx="142" fill="url(#bg)"/>
+  <rect x="18" y="18" width="476" height="476" rx="140" stroke="#FF9255" stroke-opacity=".3" stroke-width="4"/>
+
+  <!-- Chat bubble -->
+  <path d="M112 151C112 111 144 80 184 80H344C384 80 416 112 416 152V302C416 342 384 374 344 374H251L157 438V369C130 357 112 331 112 301V151Z"
+        fill="#29212D" stroke="#FF9255" stroke-width="13" stroke-linejoin="round"/>
+
+  <!-- Flame -->
+  <path d="M265 116C282 162 231 190 248 235C222 222 207 199 214 175C166 222 157 283 190 331C215 368 266 383 307 360C368 326 364 251 306 191C313 231 294 252 281 262C293 207 287 158 265 116Z"
+        fill="url(#fire)"/>
+
+  <!-- Inner flame -->
+  <path d="M267 254C239 288 242 318 264 334C284 348 314 329 307 303C302 284 282 271 280 247C276 252 271 257 267 254Z"
+        fill="url(#inner)"/>
+
+  <!-- AI sparkle -->
+  <path d="M379 83L393 119L429 133L393 147L379 183L365 147L329 133L365 119L379 83Z"
+        fill="#FFD166"/>
+  <circle cx="139" cy="115" r="9" fill="#FF9255"/>
+  <circle cx="392" cy="224" r="7" fill="#FFD166"/>
+</svg>

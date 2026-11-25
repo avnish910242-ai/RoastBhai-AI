@@ -1,0 +1,231 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta name="description" content="Your AI dost — smart help with a little extra masala.">
+  <title>AI Assistant</title>
+
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
+  <link rel="stylesheet" href="/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js" defer></script>
+  <script src="/script.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell" id="appShell">
+    <div class="scrim" id="scrim"></div>
+
+    <aside class="sidebar" id="sidebar" aria-label="Conversation sidebar">
+
+      <div class="side-top">
+        <a href="#" class="brand" id="brandHome" aria-label="Start a new chat">
+          <span class="brand-mark">
+            <img src="/logo.svg" alt="App logo" class="app-logo">
+          </span>
+        </a>
+
+        <button class="icon-button mobile-only" id="closeSidebar" aria-label="Close sidebar">
+          <svg viewBox="0 0 24 24">
+            <path d="m6 6 12 12M18 6 6 18"/>
+          </svg>
+        </button>
+      </div>
+
+      <button class="new-chat" id="newChat">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+        <span>New chat</span>
+        <kbd>⌘ K</kbd>
+      </button>
+
+      <div class="sidebar-section-label">
+        <span>Chats</span>
+        <button class="dots-button" id="clearAll" aria-label="Delete all saved conversations" title="Clear all chats">•••</button>
+      </div>
+
+      <nav class="history-list" id="historyList" aria-label="Conversation history"></nav>
+
+      <div class="sidebar-bottom">
+
+        <div class="side-note">
+          <span class="note-spark">✦</span>
+          <p><strong>Your AI dost</strong><br>Smart answers, extra masala.</p>
+        </div>
+
+        
+<div class="profile" id="profileSection">
+  <a
+    href="/login"
+    class="profile-login"
+    id="profileLogin"
+    aria-label="Login"
+  >
+    <img src="/logo.svg" alt="" class="app-logo profile-logo">
+    <span class="profile-details">
+      <strong id="profileName">Sign in</strong>
+      <small id="profileEmail">Login to your account</small>
+    </span>
+  </a>
+</div>
+
+
+      </div>
+    </aside>
+
+    <main class="main-area">
+
+      <header class="topbar">
+        <div class="topbar-left">
+
+          <button class="icon-button" id="openSidebar" aria-label="Open sidebar">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+
+          <button class="icon-button collapse-button" id="collapseSidebar" aria-label="Collapse sidebar" title="Collapse sidebar">
+            <svg viewBox="0 0 24 24">
+              <path d="M15 18 9 12l6-6"/>
+            </svg>
+          </button>
+
+          <div class="model-label">
+            <span class="online-dot"></span>
+            <img src="/logo.svg" alt="App logo" class="app-logo topbar-logo">
+          </div>
+        </div>
+
+        <button class="share-button" id="shareButton">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 16V4m0 0L7 9m5-5 5 5M5 14v5h14v-5"/>
+          </svg>
+          <span>Share</span>
+        </button>
+      </header>
+
+      <section class="chat-scroll" id="chatScroll" aria-label="Chat conversation">
+
+        <div class="welcome" id="welcome">
+
+          <div class="welcome-icon">
+            <img src="/logo.svg" alt="App logo" class="app-logo">
+          </div>
+
+          <p class="eyebrow">YOUR AI DOST · WITH EXTRA MASALA</p>
+
+          <h1>What’s on your mind?</h1>
+
+          <p class="welcome-copy">
+            Ask, create, learn, or start a friendly roast battle.<br>
+            Your AI dost is all ears.
+          </p>
+
+          <div class="suggestions" aria-label="Suggested prompts">
+
+            <button class="suggestion" data-prompt="Roast my habit of procrastinating — keep it friendly!">
+              <span class="suggestion-symbol orange">◉</span>
+              <span>
+                <strong>Roast my procrastination</strong>
+                <small>Make it friendly, not mean</small>
+              </span>
+              <svg viewBox="0 0 24 24">
+                <path d="M5 19 19 5m-8 0h8v8"/>
+              </svg>
+            </button>
+
+            <button class="suggestion" data-prompt="Help me write a funny birthday message for my best friend.">
+              <span class="suggestion-symbol purple">✦</span>
+              <span>
+                <strong>Write a birthday wish</strong>
+                <small>Funny and thoughtful</small>
+              </span>
+              <svg viewBox="0 0 24 24">
+                <path d="M5 19 19 5m-8 0h8v8"/>
+              </svg>
+            </button>
+
+            <button class="suggestion" data-prompt="Explain how black holes work in simple Hinglish.">
+              <span class="suggestion-symbol blue">⌘</span>
+              <span>
+                <strong>Explain something simply</strong>
+                <small>In clean Hinglish</small>
+              </span>
+              <svg viewBox="0 0 24 24">
+                <path d="M5 19 19 5m-8 0h8v8"/>
+              </svg>
+            </button>
+
+            <button class="suggestion" data-prompt="Give me a playful one-liner for a roast battle. Keep it kind.">
+              <span class="suggestion-symbol green">☼</span>
+              <span>
+                <strong>Start a roast battle</strong>
+                <small>Sharp, but still kind</small>
+              </span>
+              <svg viewBox="0 0 24 24">
+                <path d="M5 19 19 5m-8 0h8v8"/>
+              </svg>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="messages" id="messages" aria-live="polite"></div>
+      </section>
+
+      <div class="composer-wrap">
+
+        <form class="composer" id="chatForm">
+
+          <textarea
+            id="messageInput"
+            rows="1"
+            placeholder="Message..."
+            aria-label="Message"
+            required
+          ></textarea>
+
+          <div class="composer-footer">
+
+            <button type="button" class="composer-icon" id="attachButton" aria-label="Attachment options" title="Attachments coming soon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+
+            <span class="composer-hint">
+              Enter to send <i>·</i> Shift + Enter for new line
+            </span>
+
+            <button class="send-button" id="sendButton" aria-label="Send message" title="Send message" disabled>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 19V5m-6 6 6-6 6 6"/>
+              </svg>
+            </button>
+
+          </div>
+        </form>
+
+        <p class="disclaimer">
+          AI can make mistakes. Keep it kind, keep it fun.
+        </p>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+</body>
+</html>
