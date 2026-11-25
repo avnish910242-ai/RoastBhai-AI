@@ -1,36 +1,63 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Login | RoastBhai AI</title>
+
   <link rel="stylesheet" href="/auth.css">
 </head>
+
 <body>
   <main class="login-container">
     <div class="login-card">
+
       <div class="logo">R✦</div>
+
       <h1>Welcome to RoastBhai</h1>
       <p>Your AI dost is waiting for you.</p>
 
-      <button class="google-btn" id="googleLogin">
+      <button
+        type="button"
+        class="google-btn"
+        id="googleLogin"
+      >
         Continue with Google
       </button>
 
       <div class="separator">OR</div>
 
       <form id="loginForm">
-        <input type="email" placeholder="Email address" required>
-        <input type="password" placeholder="Password" required>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email address"
+          autocomplete="email"
+          required
+        >
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          autocomplete="current-password"
+          minlength="8"
+          required
+        >
+
         <button type="submit">Login</button>
       </form>
 
       <p class="signup-text">
-        New here? <a href="#" id="signupLink">Create account</a>
+        New here?
+        <a href="#" id="signupLink">Create account</a>
       </p>
+
     </div>
   </main>
+
   <script src="/auth.js"></script>
 </body>
 </html>

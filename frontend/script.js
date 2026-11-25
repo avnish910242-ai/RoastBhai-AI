@@ -542,3 +542,65 @@ document.addEventListener('keydown', event => {
     console.error('Chat initialization failed:', err);
   }
 })();
+
+/* RoastBhai account session integration */
+
+async function checkRoastBhaiSession() {
+  try {
+    const response = await fetch("/api/auth/me", {
+      method: "GET",
+      credentials: "same-origin"
+    });
+
+    if (response.status === 401) {
+      window.location.href = "/login";
+      return;
+    }
+
+    if (!response.ok) {
+      console.error("Could not verify account session.");
+      return;
+    }
+
+    const user = await response.json();
+
+    // Update profile information if these elements exist
+    const profileName = document.getElementById("profileName");
+    const profileEmail = document.getElementById("profileEmail");
+
+    if (profileName) {
+      profileName.textContent = user.name;
+    }
+
+    if (profileEmail) {
+      profileEmail.textContent = user.email;
+    }
+
+    // Replace login link with logout button
+    const profileLogin = document.getElementById("profileLogin");
+
+    if (profileLogin) {
+      profileLogin.textContent = "Logout";
+      profileLogin.href = "#";
+      profileLogin.onclick = async function (event) {
+        event.preventDefault();
+
+        try {
+          await fetch("/api/auth/logout", {
+            method: "POST",
+            credentials: "same-origin"
+          });
+
+          window.location.href = "/login";
+        } catch (error) {
+          console.error("Logout failed:", error);
+        }
+      };
+    }
+
+  } catch (error) {
+    console.error("Session check failed:", error);
+  }
+}
+
+checkRoastBhaiSession();
